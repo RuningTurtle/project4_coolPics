@@ -101,19 +101,26 @@ Color Rectangle::getColorBottomLeft() {
 void Rectangle::read(istream& ins) {
 	ins >> start >> end >> colorTopLeft;
 	//checks if rectangle has one color or many colors, and reads accordingly
-	if (ins >> colorTopRight) {
+	ins >> colorTopRight
+	if (ins.fail() == false) {
 		ins >> colorBottomRight >> colorBottomLeft;
 	}
 	else {
 		colorTopRight = colorTopLeft;
 		colorBottomRight = colorTopLeft;
 		colorBottomLeft = colorTopLeft;
+		ins.clear();
 	}
 }
 
 void Rectangle::write(ostream& outs) {
-	outs << start << " " << end << " " << colorTopLeft << " "
+	if (colorTopLeft == colorTopRight && colorTopRight == colorBottomRight
+	    && colorBottomRight == colorBottomLeft) {
+		outs << start << " " << end << " " << colorTopLeft;
+	else {
+		outs << start << " " << end << " " << colorTopLeft << " "
 		<< colorTopRight << " " << colorBottomRight << " " << colorBottomLeft;
+	}
 }
 
 // Your code goes above this line.
