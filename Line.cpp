@@ -5,10 +5,10 @@
  * EECS 183, Fall 2019
  * Project 4: CoolPics
  *
- * <#Name(s)#>
- * <#uniqname(s)#>
+ * <Tin Long Rex Fung, Isaac Lok-Tin Li>
+ * <rexfung, isaliac>
  *
- * <#Description#>
+ * <This file contains the class "Line">
  */
 
 #include "Line.h"
@@ -16,12 +16,47 @@
 
 // TODO: implement two Line constructors, setStart, getStart, setEnd,
 //       getEnd, setColor, getColor, read, write.
+
 Line::Line() {}
 
 Line::Line(Point pt1, Point pt2, Color color) {
 	start = pt1;
 	end = pt2;
 	lineColor = color;
+}
+
+void Line::setStart(Point pt) {
+	start = pt;
+}
+
+Point Line::getStart() {
+	return start;
+}
+
+void Line::setEnd(Point pt) {
+	end = pt;
+}
+
+Point Line::getEnd() {
+	return end;
+}
+
+void Line::setColor(Color color) {
+	lineColor = color;
+}
+
+Color Line::getColor() {
+	return lineColor;
+}
+
+void Line::read(istream& ins) {
+	ins >> start >> end >> lineColor;
+	return;
+}
+
+void Line::write(ostream& outs) {
+	outs << start << "  " << end << "  " << lineColor;
+	return;
 }
 
 // Your code goes above this line.

@@ -22,6 +22,7 @@ using namespace std;
 //       setColor, setColorTopLeft, getColorTopLeft, setColorTopRight,
 //       getColorTopRight, setColorBottomRight, getColorBottomRight,
 //       setColorBottomLeft, getColorBottomLeft, read, write.
+
 Rectangle::Rectangle() {}
 
 Rectangle::Rectangle(Point pt1, Point pt2, Color color) {
@@ -42,6 +43,76 @@ Rectangle::Rectangle(Point pt1, Point pt2, Color cTopLeft, Color cTopRight,
 	colorBottomRight = cBottomRight;
 }
 
+void Rectangle::setStart(Point pt) {
+	start = pt;
+}
+
+Point Rectangle::getStart() {
+	return start;
+}
+
+void Rectangle::setEnd(Point pt) {
+	end = pt;
+}
+
+Point Rectangle::getEnd() {
+	return end;
+}
+
+void Rectangle::setColor(Color color) {
+	colorTopLeft = color;
+	colorTopRight = color;
+	colorBottomRight = color;
+	colorBottomLeft = color;
+}
+
+void Rectangle::setColorTopLeft(Color color) {
+	colorTopLeft = color;
+}
+
+Color Rectangle::getColorTopLeft() {
+	return colorTopLeft;
+}
+
+void Rectangle::setColorTopRight(Color color) {
+	colorTopRight = color;
+}
+
+Color Rectangle::getColorTopRight() {
+	return colorTopRight;
+}
+
+void Rectangle::setColorBottomRight(Color color) {
+	colorBottomRight = color;
+}
+
+Color Rectangle::getColorBottomRight() {
+	return colorBottomRight;
+}
+
+void Rectangle::setColorBottomLeft(Color c) {
+	colorBottomLeft = c;
+}
+
+Color Rectangle::getColorBottomLeft() {
+	return colorBottomLeft;
+}
+
+void Rectangle::read(istream& ins) {
+	ins >> start >> end >> colorTopLeft;
+	ins >> colorTopRight;
+	if (ins.fail() == true) {
+		ins.clear();
+	}
+	else {
+		ins >> colorBottomRight >> colorBottomLeft;
+	}
+}
+
+void Rectangle::write(ostream& outs) {
+	outs << start << " " << end << " " << colorTopLeft << " "
+		<< colorTopRight << " " << colorBottomRight << " " << colorBottomLeft;
+}
 
 // Your code goes above this line.
 // Don't change the implementations below!
