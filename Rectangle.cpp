@@ -100,13 +100,14 @@ Color Rectangle::getColorBottomLeft() {
 
 void Rectangle::read(istream& ins) {
 	ins >> start >> end >> colorTopLeft;
-	ins >> colorTopRight;
 	//checks if rectangle has one color or many colors, and reads accordingly
-	if (ins.fail() == true) {
-		ins.clear();
+	if (ins >> colorTopRight) {
+		ins >> colorBottomRight >> colorBottomLeft;
 	}
 	else {
-		ins >> colorBottomRight >> colorBottomLeft;
+		colorTopRight = colorTopLeft;
+		colorBottomRight = colorTopLeft;
+		colorBottomLeft = colorTopLeft;
 	}
 }
 
