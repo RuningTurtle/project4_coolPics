@@ -58,11 +58,11 @@ Point Triangle::getVertexOne() {
 }
 
 void Triangle::setVertexOneColor(Color color) {
-	vertexTwoColor = color;
+	vertexOneColor = color;
 }
 
 Color Triangle::getVertexOneColor() {
-	return vertexTwoColor;
+	return vertexOneColor;
 }
 
 void Triangle::setVertexTwo(Point pt) {
