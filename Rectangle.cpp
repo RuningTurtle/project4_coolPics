@@ -114,13 +114,9 @@ void Rectangle::read(istream& ins) {
 }
 
 void Rectangle::write(ostream& outs) {
-	if (colorTopLeft == colorTopRight && colorTopRight == colorBottomRight
-	    && colorBottomRight == colorBottomLeft) {
-		outs << start << " " << end << " " << colorTopLeft;
-	else {
-		outs << start << " " << end << " " << colorTopLeft << " "
-		<< colorTopRight << " " << colorBottomRight << " " << colorBottomLeft;
-	}
+	outs << start << " " << end << " " << colorTopLeft << " "
+	<< colorTopRight << " " << colorBottomRight << " " << colorBottomLeft;
+
 }
 
 // Your code goes above this line.
