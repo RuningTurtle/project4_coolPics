@@ -132,8 +132,6 @@ int main()
 
 void writeFile(const Graphics& drawer)
 {
-    // TODO: implement
-    // This will make use of Graphics::writeFile()
 	string filename;
 	cin >> filename;
 	filename += ".bmp";
