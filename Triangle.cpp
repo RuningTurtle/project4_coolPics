@@ -102,13 +102,16 @@ void Triangle::read(istream& ins) {
 	ins >> vertexOneColor;
 	//checks if triangle has one color or three colors
 	if (ins.fail() == true) {
-		ins >> vertexTwo >> vertexThree >> vertexOneColor;
 		ins.clear();
+		ins >> vertexTwo >> vertexThree >> vertexOneColor;
+		vertexTwoColor = vertexOneColor;
+		vertexThreeColor = vertexOneColor;
 	}
 	else {
 		ins >> vertexTwo >> vertexTwoColor >> vertexThree >> vertexThreeColor;
 	}
 }
+
 void Triangle::write(ostream& outs) {
 	outs << vertexOne << " " << vertexOneColor << " " << vertexTwo << " "
 		<< vertexTwoColor << " " << vertexThree << " " << vertexThreeColor;
