@@ -59,7 +59,7 @@ string openFile(ifstream& ins);
  * Modifies: Nothing.
  * Effects:  Returns str with all of its alphabetical characters lowercased.
  */
-string toLower(string str);
+string tolower(string str);
 
 /**
  * Requires: Nothing.
@@ -101,7 +101,7 @@ int main()
     // read first command from user
     cin >> command;
     cout << endl;
-    command = toLower(command);
+    command = tolower(command);
 
     // read user's input until he or she quits
     while (command != "quit")
@@ -124,7 +124,7 @@ int main()
         // read next command
         cin >> command;
         cout << endl;
-        command = toLower(command);
+        command = tolower(command);
     }
 
     printCloser();
@@ -138,7 +138,7 @@ void writeFile(const Graphics& drawer)
 	cin >> filename;
 	filename += ".bmp";
 	drawer.writeFile(filename);
-	cout << "[Wrote " << filename << "]";
+	cout << "[Wrote " << filename << "]" << endl;
 	return;
 }
 
@@ -151,27 +151,29 @@ void loadFile(Graphics& drawer)
 	// make canvas blank
 	drawer.clear();
 
+	// declare loop variables
+	char shape = ' ';
+	Line drawL;
+	Triangle drawT;
+	Circle drawC;
+	Rectangle drawR;
+
 	// read and draw shape accordingly
 	while (inf.eof() != true) {
-		char shape;
 		inf >> shape;
 		if (shape == 'L') {
-			Line drawL;
 			drawL.read(inf);
 			drawL.draw(drawer);
 		}
 		else if (shape == 'T') {
-			Triangle drawT;
 			drawT.read(inf);
 			drawT.draw(drawer);
 		}
 		else if (shape == 'C') {
-			Circle drawC;
 			drawC.read(inf);
 			drawC.draw(drawer);
 		}
 		else if (shape == 'R') {
-			Rectangle drawR;
 			drawR.read(inf);
 			drawR.draw(drawer);
 		}
@@ -191,7 +193,7 @@ void loadFile(Graphics& drawer)
 	return;
 }
 
-string toLower(string str)
+string tolower(string str)
 {
 	for (int i = 0; i < str.length(); i++) {
 		str[i] = ::tolower(str[i]);
