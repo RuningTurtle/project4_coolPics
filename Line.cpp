@@ -14,11 +14,10 @@
 #include "Line.h"
 #include "Graphics.h"
 
-// TODO: implement two Line constructors, setStart, getStart, setEnd,
-//       getEnd, setColor, getColor, read, write.
-
+//default constructor
 Line::Line() {}
 
+//constructor for line
 Line::Line(Point pt1, Point pt2, Color color) {
 	start = pt1;
 	end = pt2;

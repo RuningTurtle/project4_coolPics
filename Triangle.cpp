@@ -5,10 +5,10 @@
  * EECS 183, Fall 2019
  * Project 4: CoolPics
  *
- * Tin Long Rex Fung, Isaac Lok-Tin Li
- * rexfung, isaliac
+ * <Tin Long Rex Fung, Isaac Lok-Tin Li>
+ * <rexfung, isaliac>
  *
- * This file contains the class "Triangle"
+ * <This file contains the class "Triangle">
  */
 
 #include "Triangle.h"
@@ -17,14 +17,10 @@
 #include <cmath>
 using namespace std;
 
-// TODO: implement three constructors, setColor, setVertexOne, getVertexOne,
-//       setVertexTwo, getVertexTwo, setVertexThree, getVertexThree,
-//       setVertexOneColor, getVertexOneColor, setVertexTwoColor,
-//       getVertexTwoColor, setVertexThreeColor, getVertexThreeColor,
-//       read, write.
-
+//default constructor
 Triangle::Triangle() {}
 
+//constructor for triangle with one color
 Triangle::Triangle(Point pt1, Point pt2, Point pt3, Color color) {
 	vertexOne = pt1;
 	vertexTwo = pt2;
@@ -33,6 +29,8 @@ Triangle::Triangle(Point pt1, Point pt2, Point pt3, Color color) {
 	vertexTwoColor = color;
 	vertexThreeColor = color;
 }
+
+//construtor for triangle with 3 colors
 Triangle::Triangle(Point pt1, Color color1,
 	Point pt2, Color color2,
 	Point pt3, Color color3) {
@@ -44,6 +42,7 @@ Triangle::Triangle(Point pt1, Color color1,
 	vertexThreeColor = color3;
 }
 
+//one color for the whole triangle
 void Triangle::setColor(Color color) {
 	vertexOneColor = color;
 	vertexTwoColor = color;
@@ -101,6 +100,7 @@ Color Triangle::getVertexThreeColor() {
 void Triangle::read(istream& ins) {
 	ins >> vertexOne;
 	ins >> vertexOneColor;
+	//checks if triangle has one color or three colors
 	if (ins.fail() == true) {
 		ins >> vertexTwo >> vertexThree >> vertexOneColor;
 		ins.clear();

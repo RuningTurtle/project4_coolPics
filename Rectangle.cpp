@@ -5,10 +5,10 @@
  * EECS 183, Fall 2019
  * Project 4: CoolPics
  *
- * Tin Long Rex Fung, Isaac Lok-Tin Li
- * rexfung, isaliac
+ * <Tin Long Rex Fung, Isaac Lok-Tin Li>
+ * <rexfung, isaliac>
  *
- * This file contains the class "Rectangle"
+ * <This file contains the class "Rectangle">
  */
 
 #include "Rectangle.h"
@@ -18,13 +18,10 @@
 #include <algorithm>
 using namespace std;
 
-// TODO: implement three constructors, setStart, getStart, setEnd, getEnd,
-//       setColor, setColorTopLeft, getColorTopLeft, setColorTopRight,
-//       getColorTopRight, setColorBottomRight, getColorBottomRight,
-//       setColorBottomLeft, getColorBottomLeft, read, write.
-
+//default constructor
 Rectangle::Rectangle() {}
 
+//constructor for rectangle with one color
 Rectangle::Rectangle(Point pt1, Point pt2, Color color) {
 	start = pt1;
 	end = pt2;
@@ -33,6 +30,8 @@ Rectangle::Rectangle(Point pt1, Point pt2, Color color) {
 	colorBottomLeft = color;
 	colorBottomRight = color;
 }
+
+//constructor for rectangle with 4 colors
 Rectangle::Rectangle(Point pt1, Point pt2, Color cTopLeft, Color cTopRight,
 	Color cBottomRight, Color cBottomLeft) {
 	start = pt1;
@@ -59,6 +58,7 @@ Point Rectangle::getEnd() {
 	return end;
 }
 
+//one color for the whole rectangle
 void Rectangle::setColor(Color color) {
 	colorTopLeft = color;
 	colorTopRight = color;
@@ -101,6 +101,7 @@ Color Rectangle::getColorBottomLeft() {
 void Rectangle::read(istream& ins) {
 	ins >> start >> end >> colorTopLeft;
 	ins >> colorTopRight;
+	//checks if rectangle has one color or many colors, and reads accordingly
 	if (ins.fail() == true) {
 		ins.clear();
 	}

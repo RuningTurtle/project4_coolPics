@@ -18,14 +18,13 @@
 #include <algorithm>
 using namespace std;
 
-// TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
-//       setRadius, getRadius, read, write.
-
+//default constructor
 Circle::Circle() { radius = 0; }
 
+//constructor for circle
 Circle::Circle(Point pt, int r, Color c) {
 	center = pt;
-	radius = r;
+	radius = checkRadius(r);
 	color = c;
 }
 
@@ -38,7 +37,7 @@ Point Circle::getCenter() {
 }
 
 void Circle::setRadius(int r) {
-	radius = r;
+	radius = checkRadius(r);
 }
 
 int Circle::getRadius() {
@@ -53,10 +52,15 @@ Color Circle::getColor() {
 	return color;
 }
 
+//reads in center, radius, color from file
 void Circle::read(istream& ins) {
-	ins >> center >> radius >> color;
+	int a;
+	ins >> center >> a >> color;
+	//checks if read radius is positive
+	radius = checkRadius(a);
 }
 
+//writes center, radius, color to file
 void Circle::write(ostream& outs) {
 	outs << center << " " << radius << " " << color;
 }
