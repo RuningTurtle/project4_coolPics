@@ -5,10 +5,10 @@
  * EECS 183, Fall 2019
  * Project 4: CoolPics
  *
- * <#Name(s)#>
- * <#uniqname(s)#>
+ * Tin Long Rex Fung, Isaac Lok-Tin Li
+ * rexfung, isaliac
  *
- * <#Description#>
+ * This file contains the class "Rectangle"
  */
 
 #include "Rectangle.h"
