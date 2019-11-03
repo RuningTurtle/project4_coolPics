@@ -93,41 +93,41 @@ void writeFile(const Graphics& drawer);
 
 int main()
 {
-    Graphics drawer;
-    string command;
-    printOpener();
-    printMenu();
+	Graphics drawer;
+	string command;
+	printOpener();
+	printMenu();
 
-    // read first command from user
-    cin >> command;
-    cout << endl;
-    command = tolower(command);
+	// read first command from user
+	cin >> command;
+	cout << endl;
+	command = tolower(command);
 
-    // read user's input until he or she quits
-    while (command != "quit")
-    {
-        if (command == "load")
-        {
-            loadFile(drawer);
-        }
-        else if (command == "write")
-        {
-            writeFile(drawer);
-        }
-        else
-        {
-            cout << "Invalid command" << endl << endl;
-        }
+	// read user's input until he or she quits
+	while (command != "quit")
+	{
+		if (command == "load")
+		{
+			loadFile(drawer);
+		}
+		else if (command == "write")
+		{
+			writeFile(drawer);
+		}
+		else
+		{
+			cout << "Invalid command" << endl << endl;
+		}
 
-        printMenu();
+		printMenu();
 
-        // read next command
-        cin >> command;
-        cout << endl;
-        command = tolower(command);
-    }
+		// read next command
+		cin >> command;
+		cout << endl;
+		command = tolower(command);
+	}
 
-    printCloser();
+	printCloser();
 }
 
 void writeFile(const Graphics& drawer)
@@ -175,13 +175,14 @@ void loadFile(Graphics& drawer)
 			drawR.read(inf);
 			drawR.draw(drawer);
 		}
-		else {
+		else if (shape != ' ') {
 			drawer.clear();
 			cout << "Error in input file: " << shape;
 			string remainingChars;
 			getline(inf, remainingChars);
 			cout << remainingChars << endl;
 		}
+		shape = ' ';
 	}
 	// close file
 	inf.close();
@@ -196,7 +197,7 @@ string tolower(string str)
 	for (int i = 0; i < str.length(); i++) {
 		str[i] = ::tolower(str[i]);
 	}
-    return str;
+	return str;
 }
 
 
@@ -204,54 +205,54 @@ string tolower(string str)
 
 void printMenu()
 {
-    cout << "Command:            Description:" << endl
-         << "--------            ------------" << endl
-         << "load filename       Loads data from a txt file" << endl
-         << "write filename      Creates a bmp image from data" << endl
-         << "quit                Quits the program" << endl << endl;
+	cout << "Command:            Description:" << endl
+		<< "--------            ------------" << endl
+		<< "load filename       Loads data from a txt file" << endl
+		<< "write filename      Creates a bmp image from data" << endl
+		<< "quit                Quits the program" << endl << endl;
 }
 
 
 void printOpener()
 {
-    cout << "=================================================" << endl
-         << "               Welcome to CoolPics" << endl
-         << "=================================================" << endl << endl;
+	cout << "=================================================" << endl
+		<< "               Welcome to CoolPics" << endl
+		<< "=================================================" << endl << endl;
 }
 
 void printCloser()
 {
-    cout << "=================================================" << endl
-         << "            Thanks for using CoolPics!" << endl
-         << "=================================================" << endl;
+	cout << "=================================================" << endl
+		<< "            Thanks for using CoolPics!" << endl
+		<< "=================================================" << endl;
 }
 
 string openFile(ifstream& ins)
 {
-    string fileName;
+	string fileName;
 
-    // close stream if open
-    if (ins.is_open())
-    {
-        ins.clear();
-        ins.close();
-    }
+	// close stream if open
+	if (ins.is_open())
+	{
+		ins.clear();
+		ins.close();
+	}
 
-    // get filename
-    cin >> fileName;
-    fileName = fileName + ".txt";
-    ins.open(fileName);
+	// get filename
+	cin >> fileName;
+	fileName = fileName + ".txt";
+	ins.open(fileName);
 
-    // keep retrying if failed to open
-    while (ins.fail())
-    {
-        cout << "Error in opening " << fileName
-             << ". Enter another file name: ";
-        ins.clear();
-        cin >> fileName;
-        fileName = fileName + ".txt";
-        ins.open(fileName);
-    }
+	// keep retrying if failed to open
+	while (ins.fail())
+	{
+		cout << "Error in opening " << fileName
+			<< ". Enter another file name: ";
+		ins.clear();
+		cin >> fileName;
+		fileName = fileName + ".txt";
+		ins.open(fileName);
+	}
 
-    return fileName;
+	return fileName;
 }
