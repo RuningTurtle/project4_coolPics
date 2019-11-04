@@ -132,6 +132,7 @@ int main()
 
 void writeFile(const Graphics& drawer)
 {
+	// Asks user for filename, and creates filename.bmp, a BMP image
 	string filename;
 	cin >> filename;
 	filename += ".bmp";
@@ -150,7 +151,7 @@ void loadFile(Graphics& drawer)
 	drawer.clear();
 
 	// declare loop variables
-	char shape = ' ';
+	char shape = ' '; // set to ' ' in case of nothing being read into shape
 	Line drawL;
 	Triangle drawT;
 	Circle drawC;
@@ -175,14 +176,15 @@ void loadFile(Graphics& drawer)
 			drawR.read(inf);
 			drawR.draw(drawer);
 		}
-		else if (shape != ' ') {
-			drawer.clear();
+		else if (shape != ' ') { // Only notifies user of invalid input if
+			drawer.clear();		 // there is actually an input, not ' '
 			cout << "Error in input file: " << shape;
 			string remainingChars;
 			getline(inf, remainingChars);
 			cout << remainingChars << endl;
 		}
-		shape = ' ';
+		shape = ' '; // reset shape to prevent it from carrying over to next
+					 // loop, in case next loop fails to update shape
 	}
 	// close file
 	inf.close();
@@ -194,8 +196,9 @@ void loadFile(Graphics& drawer)
 
 string tolower(string str)
 {
+	// loop to set each char of str to lower case
 	for (int i = 0; i < str.length(); i++) {
-		str[i] = ::tolower(str[i]);
+		str[i] = ::tolower(str[i]); // standard cctype library function
 	}
 	return str;
 }
